@@ -14,6 +14,13 @@ const indexRoutes = require('./routes/index');
 const playerRoutes = require('./routes/player.routes');
 const homeRoutes = require('./routes/index.routes');
 
+const db = mysql.createConnection({
+    host: 'bnwlvoe1cbgsxyhdyhcz-mysql.services.clever-cloud.com',
+    user: 'uyqltb0vrjluuwcd', // your mysql user
+    password: 'B9ecPQhCHU76l7RtceNo', // your mysql password
+    database: 'bnwlvoe1cbgsxyhdyhcz' 
+});
+
 app.use(
     connection(mysql, {
         host: 'bnwlvoe1cbgsxyhdyhcz-mysql.services.clever-cloud.com',
@@ -24,6 +31,13 @@ app.use(
     }, 'pool') //or single
 
 );
+db.connect((err) => {
+    if (err) {
+        throw err;
+    }
+    console.log('Connected to database');
+});
+global.db = db;
 
 // configure middleware
 app.set('views', __dirname + '/views'); // set express to look in this folder to render our view
