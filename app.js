@@ -13,18 +13,7 @@ const app = express();
 const indexRoutes = require('./routes/index');
 const playerRoutes = require('./routes/player.routes');
 const homeRoutes = require('./routes/index.routes');
-const port = 3000;
-
-
-
-// create connection to database
-// the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
-const db = mysql.createConnection({
-    host: 'bnwlvoe1cbgsxyhdyhcz-mysql.services.clever-cloud.com',
-    user: 'uyqltb0vrjluuwcd',
-    password: 'B9ecPQhCHU76l7RtceNo',
-    database: 'bnwlvoe1cbgsxyhdyhcz'
-});
+const port = process.env.port || 3000;
 
 app.use(
     connection(mysql, {
@@ -37,18 +26,7 @@ app.use(
 
 );
 
-
-// connect to database
-db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connected to database');
-});
-global.db = db;
-
 // configure middleware
-app.set('port', process.env.port || port); // set express to use this port
 app.set('views', __dirname + '/views'); // set express to look in this folder to render our view
 app.set('view engine', 'ejs');
 app.set('view engine', 'jade'); // configure template engine
