@@ -1,7 +1,8 @@
 {
   "name": "node-mqsql-crud-app",
   "version": "1.0.0",
-  "main": "app.js",  "scripts": {
+  "main": "app.js",  
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "start-server": "node app.js",
