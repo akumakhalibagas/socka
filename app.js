@@ -13,7 +13,6 @@ const app = express();
 const indexRoutes = require('./routes/index');
 const playerRoutes = require('./routes/player.routes');
 const homeRoutes = require('./routes/index.routes');
-const port = process.env.port || 3000;
 
 app.use(
     connection(mysql, {
@@ -50,7 +49,7 @@ app.get('*', function(req, res, next) {
 
 });
 
-// set the app to listen on the port
-app.listen(port, () => {
-    console.log(`Server running on port: ${port}`);
-});
+const APP_PORT = process.env.PORT || '9999';
+app.listen(APP_PORT, () => {
+    console.log(`Server started on port ${APP_PORT}...`);
+  });
