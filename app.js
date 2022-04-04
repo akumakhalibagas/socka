@@ -63,7 +63,7 @@ app.get('*', function(req, res, next) {
 
 });
 
-const APP_PORT = process.env.PORT || '9999';
+const APP_PORT = process.env.port || '7383';
 app.listen(APP_PORT, () => {
     console.log(`Server started on port ${APP_PORT}...`);
   });
